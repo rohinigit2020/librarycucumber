@@ -13,7 +13,7 @@ When('I search books by author {string}', function (author) {
   });
 
 Then('I find {int} books', function (num) {
-    //console.log(num)
+    console.log(num)
     count = 0;
     for (const row of this.rec) {
        if (row[1] == this.name){
