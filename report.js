@@ -14,7 +14,7 @@ var options = {
             "Platform": "Windows 10",
             "Parallel": "Scenarios",
             "Executed": "Remote"
-        }
+        } 
     };
 
     reporter.generate(options);
