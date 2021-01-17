@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Install') {
+            steps {
+                script {
+                    if (isUnix()) {
+                        sh 'npm install'
+                    }else {
+                        bat 'npm install'
+                    }
+                }
+                echo 'Installing the dependencies'
+                
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing the project'
+                sh 'npm test'
+            }
+        }
+        stage('Generate Report') {
+            steps {
+                echo 'To generate the report'
+                sh 'npm run report'
+            }
+        }
+        stage('Publish Report') {
+            steps {
+                echo 'Hello World'
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'report', reportFiles: 'report.html', reportName: 'HTML Report', reportTitles: ''])
+            }
+        }
+    }
+}
+
